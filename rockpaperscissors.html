@@ -18,5 +18,38 @@
 			return "scissors";
 		}
 	}
+
+	function singleRound (playerSelection) {
+		var computerSelection = computerPlay();
+		switch (playerSelection + computerSelection) {
+			case "rockpaper":
+				return "You lose, paper beats rock.";
+				break;
+			case "rockscissors":
+				return "You win, rock beats scissors.";
+				break;
+			case "rockrock":
+				return "No winner, play again.";
+				break;
+			case "paperrock":
+				return "You win, paper beats rock.";
+				break;
+			case "paperpaper":
+				return "No winner, play again.";
+				break;
+			case "paperscissors":
+				return "You lose, scissors beats paper.";
+				break;
+			case "scissorsrock":
+				return "You lose, rock beats scissors.";
+				break;
+			case "scissorspaper":
+				return "You win, scissors beats paper."
+				break;
+			case "scissorsscissors":
+				return "No winner, play again.";
+				break;
+		}
+	}
 </script>
 </html>
