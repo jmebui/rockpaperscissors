@@ -4,7 +4,6 @@
 	<title></title>
 </head>
 <body>
-
 </body>
 <script type="text/javascript">
 
@@ -19,8 +18,13 @@
 		}
 	}
 
-	function singleRound (playerSelection) {
+	function singleRound () {
+		var playerInput = prompt("rock, paper, or scissors");
+
+		var playerSelection = playerInput.toLowerCase();
+
 		var computerSelection = computerPlay();
+		
 		switch (playerSelection + computerSelection) {
 			case "rockpaper":
 				return "You lose, paper beats rock.";
