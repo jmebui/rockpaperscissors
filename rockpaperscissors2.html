@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+
+	function computerPlay () {
+		var num = Math.random();
+		if (num <= .33) {
+			return "rock";
+		} else if (num <= .66) {
+			return "paper";
+		} else {
+			return "scissors";
+		}
+	}
+
+	var computerCount = 0;
+	var playerCount = 0;
+
+	function singleRound () {
+		var playerInput = prompt("rock, paper, or scissors");
+
+		var playerSelection = playerInput.toLowerCase();
+
+		var computerSelection = computerPlay();
+		
+		switch (playerSelection + computerSelection) {
+			case "rockpaper":
+				computerCount = computerCount + 1;				
+				return "You lose, paper beats rock. " + computerCount;
+				break;
+			case "rockscissors":
+				playerCount = playerCount + 1;
+				return "You win, rock beats scissors." + playerCount;
+				return playerCount;
+				break;
+			case "rockrock":
+				return "No winner, play again. ";
+				break;
+			case "paperrock":
+				return "You win, paper beats rock. " + playerCount;
+				playerCount = playerCount + 1;
+				return playerCount;
+				break;
+			case "paperpaper":
+				return "No winner, play again. ";
+				break;
+			case "paperscissors":
+				return "You lose, scissors beats paper. " + computerCount;
+				computerCount = computerCount + 1;
+				return computerCount;
+				break;
+			case "scissorsrock":
+				return "You lose, rock beats scissors. " + computerCount;
+				computerCount = computerCount + 1;
+				return computerCount;
+				break;
+			case "scissorspaper":
+				return "You win, scissors beats paper." + playerCount;
+				playerCount = playerCount + 1;
+				return playerCount;
+				break;
+			case "scissorsscissors":
+				return "No winner, play again.";
+				break;
+		}
+	}
+
+	function game () {
+		console.log(singleRound());
+		console.log(singleRound());
+		console.log(singleRound());
+		console.log(singleRound());
+		console.log(singleRound());
+		console.log("Computer: " + computerCount);
+		console.log("You: " + playerCount);
+
+		if (computerCount > playerCount) {
+			console.log("You lose to the computer.");
+		} else if (computerCount < playerCount) {
+			console.log("You win against the computer.");
+		} else {
+			console.log("No winner.");
+		}
+	}
+</script>
+</html>
