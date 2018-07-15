@@ -2,8 +2,13 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	<h1>Rock, Paper, Scissors</h1>
+	<button id="rockbtn">Rock</button><br><br>
+	<button id="paperbtn">Paper</button><br><br>
+	<button id="scissorsbtn">Scissors</button><br><br>
 </body>
 <script type="text/javascript">
 
@@ -21,10 +26,13 @@
 	var computerCount = 0;
 	var playerCount = 0;
 
-	function singleRound () {
-		var playerInput = prompt("rock, paper, or scissors");
+	var playerSelection = "";
 
-		var playerSelection = playerInput.toLowerCase();
+
+	function singleRound () {
+//		var playerInput = prompt("rock, paper, or scissors");
+
+//		var playerSelection = playerInput.toLowerCase();
 
 		var computerSelection = computerPlay();
 		
@@ -70,22 +78,60 @@
 		}
 	}
 
-	function game () {
-		console.log(singleRound());
-		console.log(singleRound());
-		console.log(singleRound());
-		console.log(singleRound());
-		console.log(singleRound());
-		console.log("Computer: " + computerCount);
-		console.log("You: " + playerCount);
 
-		if (computerCount > playerCount) {
-			console.log("You lose to the computer.");
-		} else if (computerCount < playerCount) {
-			console.log("You win against the computer.");
-		} else {
-			console.log("No winner.");
-		}
+
+	function selectRock() {
+		playerSelection = "rock";
+		console.log(playerSelection);
+		console.log(singleRound());
 	}
+
+	function selectPaper() {
+		playerSelection = "paper";
+		console.log(playerSelection);
+		console.log(singleRound());
+	}
+
+	function selectScissors() {
+		playerSelection = "scissors";
+		console.log(playerSelection);
+		console.log(singleRound());
+	}
+
+	document.getElementById('rockbtn').addEventListener("click",function() {
+			selectRock();
+			singleRound();
+	})
+
+//	document.getElementById('rockbtn').addEventListener("click",selectRock);
+
+	document.getElementById("paperbtn").addEventListener("click", selectPaper);
+
+
+	document.getElementById("scissorsbtn").addEventListener("click", selectScissors);
+
+
+
+
+
+
+// Plays 5 rounds of rock paper scissors with computer and takes count
+//	function game () {
+//		console.log(singleRound());
+//		console.log(singleRound());
+//		console.log(singleRound());
+//		console.log(singleRound());
+//		console.log(singleRound());
+//		console.log("Computer: " + computerCount);
+//		console.log("You: " + playerCount);
+//
+//		if (computerCount > playerCount) {
+//			console.log("You lose to the computer.");
+//		} else if (computerCount < playerCount) {
+//			console.log("You win against the computer.");
+//		} else {
+//			console.log("No winner.");
+//		}
+//	}
 </script>
 </html>
