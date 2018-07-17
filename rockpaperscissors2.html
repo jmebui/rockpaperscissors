@@ -15,6 +15,7 @@
 
 	<div id="outputcontainer"></div>
 </body>
+
 <script type="text/javascript">
 
 	function computerPlay () {
@@ -32,6 +33,7 @@
 	var playerCount = 0;
 
 	var playerSelection = "";
+	var resultPrinted = "";
 
 	function singleRound () {
 //		var playerInput = prompt("rock, paper, or scissors");
@@ -43,40 +45,49 @@
 		switch (playerSelection + computerSelection) {
 			case "rockpaper":
 				computerCount = computerCount + 1;				
-				return "You lose, paper beats rock. " + computerCount;
+				resultPrinted = "You lose, paper beats rock.";
+				//return "You lose, paper beats rock." + computerCount;
 				break;
 			case "rockscissors":
 				playerCount = playerCount + 1;
-				return "You win, rock beats scissors." + playerCount;
+				resultPrinted = "You win, rock beats scissors.";
+				//return "You win, rock beats scissors." + playerCount;
 				return playerCount;
 				break;
 			case "rockrock":
-				return "No winner, play again. ";
+				resultPrinted = "No winner, play again.";
+				//return "No winner, play again.";
 				break;
 			case "paperrock":
-				return "You win, paper beats rock. " + playerCount;
+				resultPrinted = "You win, paper beats rock.";
+				//return "You win, paper beats rock. " + playerCount;
 				playerCount = playerCount + 1;
 				return playerCount;
 				break;
 			case "paperpaper":
-				return "No winner, play again. ";
+				resultPrinted = "No winner, play again.";
+				//return "No winner, play again. ";
 				break;
 			case "paperscissors":
-				return "You lose, scissors beats paper. " + computerCount;
+				resultPrinted = "You lose, scissors beats paper.";
+				//return "You lose, scissors beats paper. " + computerCount;
 				computerCount = computerCount + 1;
 				return computerCount;
 				break;
-			case "scissorsrock":
-				return "You lose, rock beats scissors. " + computerCount;
+			case "scissorsrock": 
+				resultPrinted = "You lose, rock beats scissors.";
+				//return "You lose, rock beats scissors. " + computerCount;
 				computerCount = computerCount + 1;
 				return computerCount;
 				break;
 			case "scissorspaper":
+				resultPrinted = "You win, scissors beats paper.";
 				return "You win, scissors beats paper." + playerCount;
 				playerCount = playerCount + 1;
 				return playerCount;
 				break;
 			case "scissorsscissors":
+				resultPrinted = "No winner, play again.";
 				return "No winner, play again.";
 				break;
 		}
@@ -124,7 +135,7 @@
 
 		const output = document.createElement('div');
 		output.classList.add('output');
-		output.textContent = `"${e.singleRound}"`;  `audio[data-key="${e.keyCode}"]`
+		output.textContent = resultPrinted;
 		outputcontainer.appendChild(output);	 
 	}
 
