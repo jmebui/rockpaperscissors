@@ -3,12 +3,17 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+
 </head>
 <body>
 	<h1>Rock, Paper, Scissors</h1>
+	<p>Make a selection to play against the computer:</p>
 	<button id="rockbtn">Rock</button><br><br>
 	<button id="paperbtn">Paper</button><br><br>
 	<button id="scissorsbtn">Scissors</button><br><br>
+
+	<div id="outputcontainer"></div>
 </body>
 <script type="text/javascript">
 
@@ -27,7 +32,6 @@
 	var playerCount = 0;
 
 	var playerSelection = "";
-
 
 	function singleRound () {
 //		var playerInput = prompt("rock, paper, or scissors");
@@ -78,8 +82,6 @@
 		}
 	}
 
-
-
 	function selectRock() {
 		playerSelection = "rock";
 		console.log(playerSelection);
@@ -101,15 +103,30 @@
 	document.getElementById('rockbtn').addEventListener("click",function() {
 			selectRock();
 			singleRound();
+			displayOutput();
 	})
 
-//	document.getElementById('rockbtn').addEventListener("click",selectRock);
+	document.getElementById('paperbtn').addEventListener("click",function() {
+			selectPaper();
+			singleRound();
+			displayOutput();
+	})
 
-	document.getElementById("paperbtn").addEventListener("click", selectPaper);
+	document.getElementById('scissorsbtn').addEventListener("click",function() {
+			selectScissors();
+			singleRound();
+			displayOutput();
+	})
 
 
-	document.getElementById("scissorsbtn").addEventListener("click", selectScissors);
+	function displayOutput (e) {
+		const outputcontainer = document.querySelector('#outputcontainer');
 
+		const output = document.createElement('div');
+		output.classList.add('output');
+		output.textContent = `"${e.singleRound}"`;  `audio[data-key="${e.keyCode}"]`
+		outputcontainer.appendChild(output);	 
+	}
 
 
 
