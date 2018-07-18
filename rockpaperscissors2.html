@@ -14,6 +14,7 @@
 	<button id="scissorsbtn">Scissors</button><br><br>
 
 	<div id="outputcontainer"></div>
+	<div id="winnercontainer"></div>
 </body>
 
 <script type="text/javascript">
@@ -46,49 +47,35 @@
 			case "rockpaper":
 				computerCount = computerCount + 1;				
 				resultPrinted = "You lose, paper beats rock.";
-				//return "You lose, paper beats rock." + computerCount;
 				break;
 			case "rockscissors":
 				playerCount = playerCount + 1;
 				resultPrinted = "You win, rock beats scissors.";
-				//return "You win, rock beats scissors." + playerCount;
-				return playerCount;
 				break;
 			case "rockrock":
 				resultPrinted = "No winner, play again.";
-				//return "No winner, play again.";
 				break;
 			case "paperrock":
 				resultPrinted = "You win, paper beats rock.";
-				//return "You win, paper beats rock. " + playerCount;
 				playerCount = playerCount + 1;
-				return playerCount;
 				break;
 			case "paperpaper":
 				resultPrinted = "No winner, play again.";
-				//return "No winner, play again. ";
 				break;
 			case "paperscissors":
 				resultPrinted = "You lose, scissors beats paper.";
-				//return "You lose, scissors beats paper. " + computerCount;
 				computerCount = computerCount + 1;
-				return computerCount;
 				break;
 			case "scissorsrock": 
 				resultPrinted = "You lose, rock beats scissors.";
-				//return "You lose, rock beats scissors. " + computerCount;
 				computerCount = computerCount + 1;
-				return computerCount;
 				break;
 			case "scissorspaper":
 				resultPrinted = "You win, scissors beats paper.";
-				return "You win, scissors beats paper." + playerCount;
 				playerCount = playerCount + 1;
-				return playerCount;
 				break;
 			case "scissorsscissors":
 				resultPrinted = "No winner, play again.";
-				return "No winner, play again.";
 				break;
 		}
 	}
@@ -96,19 +83,16 @@
 	function selectRock() {
 		playerSelection = "rock";
 		console.log(playerSelection);
-		console.log(singleRound());
 	}
 
 	function selectPaper() {
 		playerSelection = "paper";
 		console.log(playerSelection);
-		console.log(singleRound());
 	}
 
 	function selectScissors() {
 		playerSelection = "scissors";
 		console.log(playerSelection);
-		console.log(singleRound());
 	}
 
 	document.getElementById('rockbtn').addEventListener("click",function() {
@@ -129,15 +113,16 @@
 			displayOutput();
 	})
 
-
 	function displayOutput (e) {
 		const outputcontainer = document.querySelector('#outputcontainer');
 
 		const output = document.createElement('div');
 		output.classList.add('output');
-		output.textContent = resultPrinted;
+		output.textContent = resultPrinted + " You: " + playerCount + " Computer: " + computerCount;
 		outputcontainer.appendChild(output);	 
 	}
+
+
 
 
 
