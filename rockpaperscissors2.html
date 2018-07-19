@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>Rock, Paper, Scissors</h1>
-	<p>Make a selection to play against the computer:</p>
+	<p>Make a selection to play against the computer. The first one to 5 points wins. After that, the game will reset.</p>
 	<button id="rockbtn">Rock</button><br><br>
 	<button id="paperbtn">Paper</button><br><br>
 	<button id="scissorsbtn">Scissors</button><br><br>
@@ -35,6 +35,7 @@
 
 	var playerSelection = "";
 	var resultPrinted = "";
+	var winnerPrinted = "";
 
 	function singleRound () {
 //		var playerInput = prompt("rock, paper, or scissors");
@@ -98,18 +99,21 @@
 	document.getElementById('rockbtn').addEventListener("click",function() {
 			selectRock();
 			singleRound();
+			updateWinner();
 			displayOutput();
 	})
 
 	document.getElementById('paperbtn').addEventListener("click",function() {
 			selectPaper();
 			singleRound();
+			updateWinner();
 			displayOutput();
 	})
 
 	document.getElementById('scissorsbtn').addEventListener("click",function() {
 			selectScissors();
 			singleRound();
+			updateWinner();
 			displayOutput();
 	})
 
@@ -118,11 +122,25 @@
 
 		const output = document.createElement('div');
 		output.classList.add('output');
-		output.textContent = resultPrinted + " You: " + playerCount + " Computer: " + computerCount;
+		output.textContent = resultPrinted + " You: " + playerCount + " Computer: " + computerCount + ". " +winnerPrinted;
 		outputcontainer.appendChild(output);	 
 	}
 
-
+	function updateWinner (e) {
+		if (playerCount === 5) {
+			winnerPrinted = "Congrats, you won! Resetting the game...";
+			setTimeout(function(){
+				location.reload();
+			}, 3000);
+		} else if (computerCount === 5) {
+			winnerPrinted = "Sorry, the computer won. Resetting the game...";
+			setTimeout(function(){
+				location.reload();
+			}, 3000);
+		} else {
+			return "";
+		}
+	}
 
 
 
